@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <router-link class="nav-link" to="/">Home</router-link>
         <router-link class="nav-link" to="/about">About</router-link>
-        <router-link class="nav-link" to="/AllStocks">All Shares</router-link>
+        <router-link class="nav-link" to="/AllShares">All Shares</router-link>
 <!--        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
