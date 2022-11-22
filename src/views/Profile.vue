@@ -32,6 +32,7 @@ export default {
   },
   async created () {
     this.claims = await Object.entries(await this.$auth.getUser()).map(entry => ({ claim: entry[0], value: entry[1] }))
+    console.log(this.claims)
   }
 }
 </script>
