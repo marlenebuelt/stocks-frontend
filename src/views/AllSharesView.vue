@@ -1,14 +1,13 @@
 <template>
+  <h1>All Shares</h1>
   <div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col">
+    <SharesCreateForm @created="addShare"></SharesCreateForm>
+    <div class="col" v-for="share in shares" :key="share.id">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Apple</h5>
-          <p class="card-text">Apple Share </p>
-      </div>
-        <div class="card-body">
-          <h5 class="card-title">Google</h5>
-          <p class="card-text">Google Share</p>
+          <h5 class="card-title">{{ share.name }}</h5>
+          <p class="card-text">{{ share.name }} costs {{ share.stocksPrice }} and we
+            {{ share.buy ? 'recommend' : 'do not recommend' }} buying it. </p>
         </div>
       </div>
     </div>
@@ -16,8 +15,42 @@
 </template>
 
 <script>
+import SharesCreateForm from '@/components/SharesCreateForm'
+
 export default {
-  name: 'AllSharesView'
+  name: 'AllShares',
+  components: { SharesCreateForm },
+  data () {
+    return {
+      shares: []
+    }
+  },
+  methods: {
+    addShare (shareName) {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + shareName
+      const requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      }
+      fetch(endpoint, requestOptions)
+        .then(response => response.json())
+        .then(share => this.shares.push(share))
+        .catch(error => console.log('error', error))
+    }
+  },
+  mounted () {
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/shares'
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    }
+    fetch(endpoint, requestOptions)
+      .then(response => response.json())
+      .then(result => result.forEach(share => {
+        this.shares.push(share)
+      }))
+      .catch(error => console.log('error', error))
+  }
 }
 </script>
 

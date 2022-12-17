@@ -11,20 +11,6 @@
         <router-link class="nav-link" to="/AllShares">All Shares</router-link>
         <router-link class="nav-link" to="/login">Login</router-link>
         <router-link class="nav-link" to="/profile">Profile</router-link>
-<!--        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">All Stocks</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Most recent data</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Charts</a>
-          </li>
-        </ul>-->
       </div>
     </div>
   </nav>
