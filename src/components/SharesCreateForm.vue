@@ -60,6 +60,7 @@ export default {
   name: 'SharesCreateForm',
   data () {
     return {
+      // id: '',
       wkn: '',
       name: '',
       price: '',
@@ -79,6 +80,7 @@ export default {
         headers.append('Content-Type', 'application/json')
 
         const share = JSON.stringify({
+          // id: this.id,
           wkn: this.wkn,
           name: this.name,
           price: this.price,
