@@ -29,16 +29,17 @@ export default {
   methods: {
     async addShare (shareLocation) {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + shareLocation
-      const requestOptionAdd = {
+      const requestOptions = {
         method: 'GET',
         redirect: 'follow'
       }
-      fetch(endpoint, requestOptionAdd)
+      fetch(endpoint, requestOptions)
         .then(response => response.json())
         .then(share => this.shares.push(share))
         .catch(error => console.log('error', error))
     }
-    /*     async deleteShare (shareLocation) {
+
+    /* async deleteShare (shareLocation) {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + shareLocation
       const requestOptionDelete = {
         method: 'DELETE',
@@ -52,26 +53,24 @@ export default {
   },
   mounted () {
     const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/shares/'
-    const requestOptionAdd = {
+    const requestOptions = {
       method: 'GET',
       redirect: 'follow'
     }
-    /*     const requestOptionDelete = {
+    /* const requestOptionDelete = {
       method: 'DELETE',
       redirect: 'follow'
     } */
-    fetch(endpoint, requestOptionAdd)
+    fetch(endpoint, requestOptions)
       .then(response => response.json())
       .then(result => result.forEach(share => {
         this.shares.push(share)
-      }))
-    /*     fetch(endpoint, requestOptionDelete)
-      .then(response => response.json())
-      .then(result => result.forEach(share => {
-        this.shares.push(share)
-      }))
-      .catch(error => console.log('error', error))
-  } */
+      })).catch(error => console.log('error', error))
   }
+  /* fetch(endpoint, requestOptionDelete)
+    .then(response => response.json())
+    .then(result => result.forEach(share => {
+      this.shares.push(share)
+    })) */
 }
 </script>
