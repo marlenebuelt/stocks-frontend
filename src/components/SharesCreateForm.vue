@@ -51,8 +51,7 @@
               </ul>
             </div>
             <div class="col-12">
-              <button class="btn btn-primary" type="submit" @click.prevent="createShare"> Add Share</button>
-              <button class="btn btn-danger" type="reset">Reset</button>
+              <button class="btn btn-primary" type="submit" @click="createShare"> Add Share</button>
             </div>
           </form>
         </div>

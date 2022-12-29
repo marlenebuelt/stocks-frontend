@@ -46,4 +46,7 @@
 .accordion-collapse{
   background-color: deepskyblue;
 }
+.accordion-item{
+  font-family: "American Typewriter";
+}
 </style>
