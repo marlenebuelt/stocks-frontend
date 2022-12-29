@@ -8,9 +8,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <router-link class="nav-link" to="/">Home</router-link>
         <router-link class="nav-link" to="/about">About</router-link>
-        <router-link class="nav-link" to="/AllShares">All Shares</router-link>
-        <router-link class="nav-link" to="/login">Login</router-link>
-        <router-link class="nav-link" to="/profile">Profile</router-link>
+        <router-link class="nav-link" to="/AllShares" v-if="authenticated">All Shares</router-link>
+        <router-link class="nav-link" to="/login" v-if="!authenticated">Login</router-link>
+        <router-link class="nav-link" to="/profile" v-if="authenticated">Profile</router-link>
+        <router-link class="nav-link" v-if="authenticated" v-on:click="logout()" to="/">Logout</router-link>
       </div>
     </div>
   </nav>
@@ -19,7 +20,25 @@
 <script>
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Navbar'
+  name: 'Navbar',
+  data: function () {
+    return { authenticated: false }
+  },
+  async created () {
+    await this.isAuthenticated()
+    this.$auth.authStateManager.subscribe(this.isAuthenticated)
+  },
+  watch: {
+    $route: 'isAuthenticated'
+  },
+  methods: {
+    async isAuthenticated () {
+      this.authenticated = await this.$auth.isAuthenticated()
+    },
+    async logout () {
+      await this.$auth.signOut()
+    }
+  }
 }
 </script>
 

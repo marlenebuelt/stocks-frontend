@@ -75,7 +75,7 @@ export default {
   },
   emits: ['created'],
   methods: {
-    async createShare () {
+    createShare () {
       if (this.validate()) {
         console.log(this.wkn)
         console.log(this.name)
@@ -93,9 +93,7 @@ export default {
           stocksPrice: this.stocksPrice,
           buy: this.buy
         })
-        console.log(endpoint)
-        console.log(share)
-        console.log(headers)
+
         const requestOptions = {
           method: 'POST',
           headers: {
@@ -104,8 +102,9 @@ export default {
           body: share,
           redirect: 'follow'
         }
-        const response = await fetch(endpoint, requestOptions)
-        await this.handleResponse(response)
+        fetch(endpoint, requestOptions)
+          .then(response => response.text())
+          .catch(error => console.log('error', error))
       }
     },
     async handleResponse (response) {

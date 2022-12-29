@@ -9,6 +9,7 @@
           <p class="card-text">{{ share.name }} costs {{ share.stocksPrice }} and we
             {{ share.buy ? 'recommend' : 'do not recommend' }} buying it. </p>
           <button class="btn btn-close" @click.prevent="deleteShare(shares.id)"></button>
+          <button class="btn">Reset</button>
         </div>
       </div>
     </div>
@@ -27,7 +28,7 @@ export default {
     }
   },
   methods: {
-    async addShare (shareLocation) {
+    addShare (shareLocation) {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + shareLocation
       const requestOptions = {
         method: 'GET',
@@ -37,9 +38,8 @@ export default {
         .then(response => response.json())
         .then(share => this.shares.push(share))
         .catch(error => console.log('error', error))
-    }
-
-    /* async deleteShare (shareLocation) {
+    },
+    deleteShare (shareLocation) {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + shareLocation
       const requestOptionDelete = {
         method: 'DELETE',
@@ -49,7 +49,7 @@ export default {
         .then(response => response.json())
         .then(share => this.shares.push(share))
         .catch(error => console.log('error', error))
-    } */
+    }
   },
   mounted () {
     const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/shares/'
@@ -57,20 +57,25 @@ export default {
       method: 'GET',
       redirect: 'follow'
     }
-    /* const requestOptionDelete = {
-      method: 'DELETE',
-      redirect: 'follow'
-    } */
     fetch(endpoint, requestOptions)
       .then(response => response.json())
       .then(result => result.forEach(share => {
         this.shares.push(share)
       })).catch(error => console.log('error', error))
+
+    const requestOptionDelete = {
+      method: 'DELETE',
+      redirect: 'follow'
+    }
+    fetch(endpoint, requestOptionDelete)
+      .then(response => response.json())
+      .then(result => result.forEach(share => {
+        this.shares.push(share)
+      })).catch(error => console.log('error', error))
   }
-  /* fetch(endpoint, requestOptionDelete)
-    .then(response => response.json())
-    .then(result => result.forEach(share => {
-      this.shares.push(share)
-    })) */
 }
 </script>
+
+<style scoped>
+
+</style>
