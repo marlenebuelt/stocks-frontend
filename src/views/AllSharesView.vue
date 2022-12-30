@@ -9,6 +9,7 @@
           <p class="card-text">{{ share.name }} costs {{ share.stocksPrice }} and we
             {{ share.buy ? 'recommend' : 'do not recommend' }} buying it. </p>
           <SharesDeleteForm @click="deleteShare"></SharesDeleteForm>
+          <SharesChangeForm @click="updateShare"></SharesChangeForm>
         </div>
       </div>
     </div>
@@ -18,12 +19,14 @@
 <script>
 import SharesCreateForm from '@/components/SharesCreateForm'
 import SharesDeleteForm from '@/components/SharesDeleteForm'
+import SharesChangeForm from '@/components/SharesChangeForm'
 
 export default {
   name: 'AllShares',
   components: {
     SharesCreateForm,
-    SharesDeleteForm
+    SharesDeleteForm,
+    SharesChangeForm
   },
   data () {
     return {
@@ -44,11 +47,23 @@ export default {
     },
     deleteShare (shareLocation) {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + shareLocation
-      const requestOptionDelete = {
+      const requestOptions = {
         method: 'DELETE',
         redirect: 'follow'
       }
-      fetch(endpoint, requestOptionDelete)
+      fetch(endpoint, requestOptions)
+        .then(response => response.json())
+        .then(share => this.shares.push(share))
+        .catch(error => console.log('error', error))
+    },
+    updateShare (shareLocation) {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + shareLocation
+      const requestOptions = {
+        method: 'PUT',
+        redirect: 'follow'
+      }
+      console.log(this.name)
+      fetch(endpoint, requestOptions)
         .then(response => response.json())
         .then(share => this.shares.push(share))
         .catch(error => console.log('error', error))
@@ -81,6 +96,18 @@ export default {
           console.log(share.id)
           console.log(endpointDel)
         })).catch(error => console.log('error', error))
+    }
+    {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/shares/'
+      const requestOptions = {
+        method: 'PUT',
+        redirect: 'follow'
+      }
+      console.log(this.name)
+      fetch(endpoint, requestOptions)
+        .then(response => response.json())
+        .then(share => this.shares.push(share))
+        .catch(error => console.log('error', error))
     }
   }
 }

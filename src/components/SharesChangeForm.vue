@@ -1,12 +1,12 @@
 <template>
   <div>
-  <button class="btn btn-close" type="button" @click="deleteShare"></button>
+    <button type="button" class="btn btn-light">Update Values</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SharesDeleteForm',
+  name: 'SharesChangeForm',
   data () {
     return {
       wkn: '',
@@ -15,9 +15,9 @@ export default {
       buy: false
     }
   },
-  emits: ['deleted'],
+  emits: ['updated'],
   methods: {
-    deleteShare () {
+    updateShare () {
       console.log(this.wkn)
       console.log(this.name)
       console.log(this.stocksPrice)
@@ -36,7 +36,7 @@ export default {
       })
 
       const requestOptions = {
-        method: 'DELETE',
+        method: 'PUT',
         headers: headers,
         body: share,
         redirect: 'follow'
