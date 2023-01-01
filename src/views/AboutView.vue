@@ -22,14 +22,14 @@
   <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
     <div class="accordion-body">
       <strong>How can you use this app?</strong>
-      This is fairly easy. You simply register via the login page. After you registered, you can simply access the data you have recently stored and add some new data on the All Shares page!
+      This is fairly easy. You register via the login page. After you are registered, you can simply access the data you have recently stored and add some new data on the All Shares page!
           </div>
   </div>
 </div>
 <div class="accordion-item">
   <h2 class="accordion-header" id="headingThree">
     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-      About the developer
+      About the Developer
     </button>
   </h2>
   <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
@@ -44,9 +44,6 @@
 
 <style>
 .accordion-collapse{
-  background-color: deepskyblue;
-}
-.accordion-item{
-  font-family: "American Typewriter";
+  background-color: lightgray;
 }
 </style>

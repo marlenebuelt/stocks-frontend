@@ -2,7 +2,7 @@
   <div class="accordion accordion-flush" id="accordionFlushExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingOne">
-        <button class="accordion-button collapsed" type="button" id="button-close" data-bs-toggle="collapse"
+        <button class="accordion-button collapsed" type="button" id="shares-create-button-close" data-bs-toggle="collapse"
                 data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
           Add a new Share to Your List!
         </button>

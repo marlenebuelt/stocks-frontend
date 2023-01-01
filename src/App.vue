@@ -34,22 +34,25 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #2f2b2b;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  minWidth: 100vw;
+  background: lightgray;
 }
-
+body {
+  font-family: 'Poppins', sans-serif;
+}
 nav {
-  padding: 30px;
 }
 
 nav a {
-  font-weight: bold;
   color: #2c3e50;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: black;
 }
 </style>

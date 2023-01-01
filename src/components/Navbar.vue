@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <router-link class="nav-link" to="/">Home</router-link>
         <router-link class="nav-link" to="/about">About</router-link>
-        <router-link class="nav-link" to="/AllShares" v-if="authenticated">All Shares</router-link>
+        <router-link class="nav-link" to="/AllShares" v-if="authenticated">Your Shares</router-link>
         <router-link class="nav-link" to="/login" v-if="!authenticated">Login</router-link>
         <router-link class="nav-link" to="/profile" v-if="authenticated">Profile</router-link>
         <router-link class="nav-link" v-if="authenticated" v-on:click="logout()" to="/">Logout</router-link>

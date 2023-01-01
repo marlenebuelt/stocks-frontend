@@ -25,8 +25,10 @@ export default {
 
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/shares'
 
-      const headers = new Headers()
-      headers.append('Content-Type', 'application/json')
+      // const headers = new Headers()
+      // headers.append('Content-Type', 'application/json')
+
+      // headers.append('Access-Control-Allow-Origin', '*')
 
       const share = JSON.stringify({
         wkn: this.wkn,
@@ -37,11 +39,12 @@ export default {
 
       const requestOptions = {
         method: 'DELETE',
-        headers: headers,
+        // headers: headers,
         body: share,
         redirect: 'follow'
       }
       console.log(this.name)
+      console.log('rq-op' + requestOptions)
       fetch(endpoint, requestOptions)
         .then(response => response.text())
         .catch(error => console.log('error', error))
