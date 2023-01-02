@@ -1,17 +1,3 @@
-<!--<template>
-  <form>
-    <div class="mb-3">
-      <label for="updatePrice" class="form-label">Update Price</label>
-      <input class="form-control" id="updatePrice" v-model="stocksPrice">
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="updateBuy" v-model="buy">
-        Update Buy?
-    </div>
-    <button type="submit" @click.prevent="updateShare" class="btn btn-primary">Submit</button>
-  </form>
-</template>-->
-
 <template>
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">
@@ -60,7 +46,6 @@ export default {
       headers.append('Content-Type', 'application/json')
 
       const shareUpdate = JSON.stringify({
-        name: this.name,
         stocksPrice: this.stocksPrice,
         buy: this.buy
       })

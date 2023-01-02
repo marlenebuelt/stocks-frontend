@@ -76,10 +76,6 @@ export default {
   methods: {
     createShare () {
       if (this.validate()) {
-        console.log(this.wkn)
-        console.log(this.name)
-        console.log(this.stocksPrice)
-        console.log(this.buy)
 
         const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/shares'
 
