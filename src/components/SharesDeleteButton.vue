@@ -37,8 +37,7 @@ export default {
         body: share,
         redirect: 'follow'
       }
-      console.log(this.name)
-      console.log('rq-op' + requestOptions)
+
       fetch(endpoint, requestOptions)
         .then(response => response.text())
         .catch(error => console.log('error', error))
