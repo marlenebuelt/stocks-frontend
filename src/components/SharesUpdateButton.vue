@@ -6,11 +6,11 @@
 
 <script>
 export default {
-  name: 'SharesChangeForm',
+  name: 'SharesUpdateButton',
   data () {
     return {
-      wkn: '',
-      name: '',
+      // wkn: '',
+      // name: '',
       stocksPrice: '',
       buy: false
     }
@@ -18,32 +18,23 @@ export default {
   emits: ['updated'],
   methods: {
     updateShare () {
-      console.log(this.wkn)
-      console.log(this.name)
-      console.log(this.stocksPrice)
-      console.log(this.buy)
-
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/shares'
-
       const headers = new Headers()
       headers.append('Content-Type', 'application/json')
 
-      const share = JSON.stringify({
-        wkn: this.wkn,
-        name: this.name,
+      const shareUpdate = JSON.stringify({
         stocksPrice: this.stocksPrice,
         buy: this.buy
       })
-
       const requestOptions = {
         method: 'PUT',
         headers: headers,
-        body: share,
+        body: shareUpdate,
         redirect: 'follow'
       }
-      console.log(this.name)
       fetch(endpoint, requestOptions)
         .then(response => response.text())
+        .then(result => console.log(result))
         .catch(error => console.log('error', error))
     }
   }
@@ -51,6 +42,5 @@ export default {
 </script>
 
 <style>
-
 
 </style>

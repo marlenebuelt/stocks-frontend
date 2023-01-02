@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'SharesDeleteForm',
+  name: 'SharesDeleteButton',
   data () {
     return {
       wkn: '',
@@ -25,11 +25,6 @@ export default {
 
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/shares'
 
-      // const headers = new Headers()
-      // headers.append('Content-Type', 'application/json')
-
-      // headers.append('Access-Control-Allow-Origin', '*')
-
       const share = JSON.stringify({
         wkn: this.wkn,
         name: this.name,
@@ -39,7 +34,6 @@ export default {
 
       const requestOptions = {
         method: 'DELETE',
-        // headers: headers,
         body: share,
         redirect: 'follow'
       }
