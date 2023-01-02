@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <form>
     <div class="mb-3">
       <label for="updatePrice" class="form-label">Update Price</label>
@@ -10,6 +10,31 @@
     </div>
     <button type="submit" @click.prevent="updateShare" class="btn btn-primary">Submit</button>
   </form>
+</template>-->
+
+<template>
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <div class="accordion-header" id="update">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Update Price
+        </button>
+      </div>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <div class="mb-3">
+            <label for="updatePrice" class="form-label">Update Price</label>
+            <input class="form-control" id="updatePrice" v-model="stocksPrice">
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="updateBuy" v-model="buy">
+            Update Buy?
+          </div>
+          <button type="submit" @click="updateShare" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
