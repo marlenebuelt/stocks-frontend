@@ -6,7 +6,6 @@ describe('Testing AllSharesView.vue', () => {
   it('should show page title', () => {
     // when
     const wrapper = mount(AllSharesView)
-
     // then
     expect(wrapper.text()).toMatch('All Shares')
   })
@@ -18,5 +17,40 @@ describe('Testing AllSharesView.vue', () => {
     // then
     const createForm = wrapper.findComponent(SharesCreateForm)
     expect(createForm.exists()).toBeTruthy()
+  })
+
+  it('counts the number of cards that have been added', () => {
+    const wrapper = mount(AllSharesView, {
+      props: {
+        shares: [{
+          wkn: '123',
+          name: 'Apple',
+          stocksPrice: 100,
+          buy: false
+        },
+        {
+          wkn: '456',
+          name: 'Biontech',
+          stocksPrice: 120,
+          buy: true
+        }]
+      }
+    })
+    expect(wrapper.findAll('.card').length).toBe(2)
+  })
+
+  it('returns the correct name of the share', () => {
+    const wrapper = mount(AllSharesView, {
+      props: {
+        shares: {
+          wkn: '123',
+          name: 'Apple',
+          stocksPrice: 100,
+          buy: false
+        }
+      }
+    })
+    const shareName = wrapper.findAll('.name')
+    expect(shareName.text()).toBe('Apple')
   })
 })

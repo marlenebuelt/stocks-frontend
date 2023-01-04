@@ -76,7 +76,6 @@ export default {
   methods: {
     createShare () {
       if (this.validate()) {
-
         const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/shares'
 
         const headers = new Headers()
