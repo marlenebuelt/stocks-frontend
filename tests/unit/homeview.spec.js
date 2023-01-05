@@ -8,4 +8,8 @@ describe('tests functions of the homeview-page', () => {
     const wrapper = mount(HomeView)
     expect(wrapper.findComponent(Navbar)).toBeTruthy()
   })
+  it('should find Hello World Component', () => {
+    const wrapper = mount(HomeView)
+    expect(wrapper.findComponent(HelloWorld)).toBeTruthy()
+  })
 })
