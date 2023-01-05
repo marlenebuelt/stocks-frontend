@@ -20,7 +20,6 @@ export default {
   },
   async created () {
     this.details = await this.$auth.getUser()
-    console.log((this.details))
   }
 }
 </script>

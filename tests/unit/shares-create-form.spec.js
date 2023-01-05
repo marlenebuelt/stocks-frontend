@@ -6,6 +6,5 @@ describe('Testing SharesCreateForm.vue', () => {
     // when
     const wrapper = mount(SharesCreateForm)
     // then
-    expect(wrapper.text()).toMatch('Add a new Share to Your List!')
-  })
+    expect(wrapper.text()).toMatch('Add a new Share to Your List!')})
 })
