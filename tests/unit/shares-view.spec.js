@@ -8,68 +8,51 @@ describe('AllSharesView tests', () => {
     fetch.resetMocks()
   })
   it('should render the title passed to it', () => {
-    fetch.mockResponseOnce(JSON.stringify([
-      {
-        id: 1,
-        wkn: '1234',
-        name: 'Biontech',
-        stocksPrice: 100.5,
-        buy: true
-      },
-      {
-        id: 2,
-        wkn: '4567',
-        name: 'Astra Zeneca',
-        stocksPrice: 130.5,
-        buy: false
-      }]))
-    const title = 'This is a title!'
+    fetch.mockResponseOnce(JSON.stringify([]))
+    const title = 'All Shares'
     const wrapper = shallowMount(AllSharesView, {
       props: { title }
     })
     expect(wrapper.text()).toMatch(title)
   })
-})
-it('should show page title', () => {
-  const wrapper = shallowMount(AllSharesView)
-  expect(wrapper.text()).toMatch('All Shares')
-})
 
-it('should have shares card list component', () => {
-  const wrapper = mount(AllSharesView)
-
-  const form = wrapper.findComponent(SharesUpdateForm)
-  expect(form.exists()).toBeTruthy()
-})
-
-it('should have shares create form component', () => {
-  // when
-  const wrapper = mount(AllSharesView)
-  const createForm = wrapper.findComponent(SharesCreateForm)
-  expect(createForm.exists()).toBeTruthy()
-})
-
-it('counts numbers of rows in Component TableCategories', () => {
-  const wrapper = mount(AllSharesView, {
-    propsData: {
-      shares: [
-        {
-          id: 1,
-          wkn: '1234',
-          name: 'Biontech',
-          stocksPrice: 100.5,
-          buy: true
-        },
-        {
-          id: 2,
-          wkn: '4567',
-          name: 'Astra Zeneca',
-          stocksPrice: 130.5,
-          buy: false
-        }
-      ]
-    }
+  it('should return the correct header', () => {
+    const wrapper = mount(SharesCreateForm, {
+      propsData: {
+        shares: [
+          {
+            id: 1,
+            wkn: '1234',
+            name: 'Biontech',
+            stocksPrice: 100.5,
+            buy: true
+          }
+        ]
+      }
+    })
+    const cardTitle = wrapper.find('.card-title')
+    expect(cardTitle.text()).toBe('Biontech')
   })
-  const cards = wrapper.findAll('.cards')
-  expect(cards.length).toBe(2)
+
+  it('counts numbers of shares', () => {
+    fetch.mockResponseOnce(JSON.stringify(AllSharesView, {
+      propsData: {
+        shares: [
+          {
+            id: 1,
+            wkn: '1234',
+            name: 'Biontech',
+            stocksPrice: 100.5,
+            buy: true
+          }
+        ]
+      }
+    }))
+    const wrapper = mount(AllSharesView)
+    const cardTitle = wrapper.find('.card-title')
+    expect(cardTitle.text()).toBe('Max Mustermann')
+
+    const cards = wrapper.findAll('.col')
+    expect(cards.length).toBe(2)
+  })
 })
