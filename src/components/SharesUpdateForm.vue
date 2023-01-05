@@ -36,6 +36,10 @@ export default {
     shareId: {
       type: Number,
       required: true
+    },
+    name: {
+      type: String,
+      required: true
     }
   },
   emits: ['updated'],
@@ -46,6 +50,7 @@ export default {
       headers.append('Content-Type', 'application/json')
 
       const shareUpdate = JSON.stringify({
+        name: this.name,
         stocksPrice: this.stocksPrice,
         buy: this.buy
       })

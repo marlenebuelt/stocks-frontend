@@ -11,7 +11,7 @@
             WKN: {{share.wkn}}
           </p>
           <button class="btn btn-close" type="button" @click="deleteShare(share.id)"></button>
-          <SharesUpdateForm :shareId="share.id"></SharesUpdateForm>
+          <SharesUpdateForm :name="share.name" :shareId="share.id"></SharesUpdateForm>
         </div>
       </div>
     </div>
