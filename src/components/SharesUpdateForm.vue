@@ -3,7 +3,7 @@
     <div class="accordion-item">
       <div class="accordion-header" id="update">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Update Price
+          Update Values
         </button>
       </div>
       <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
