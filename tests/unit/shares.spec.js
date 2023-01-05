@@ -3,8 +3,14 @@ import AllSharesView from '@/views/AllSharesView'
 import SharesCreateForm from '@/components/SharesCreateForm'
 
 describe('Testing AllSharesView.vue', () => {
+  beforeEach(() => {
+    fetch.resetMocks()
+  })
+
   it('should show page title', () => {
     // when
+    fetch.mockResponseOnce(JSON.stringify(emptyResponse))
+
     const wrapper = mount(AllSharesView)
     // then
     expect(wrapper.text()).toMatch('All Shares')
