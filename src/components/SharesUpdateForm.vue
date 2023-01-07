@@ -16,7 +16,7 @@
             <input class="form-check-input" type="checkbox" id="updateBuy" v-model="buy">
             Update Buy?
           </div>
-          <button type="submit" @click="updateShare" class="btn btn-primary">Submit</button>
+          <button type="submit" @click.prevent="updateShare" class="btn btn-primary">Submit</button>
         </div>
       </div>
     </div>
