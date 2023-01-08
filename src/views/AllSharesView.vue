@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">{{ share.name }}</h5>
-          <p class="card-text">{{ share.name }} costs {{ share.stocksPrice }} and we
+          <p class="card-text">{{ share.name }} costs {{ share.stocksPrice }} euros and we
             {{ share.buy ? 'recommend' : 'do not recommend' }} buying it.
             WKN: {{share.wkn}}
           </p>
